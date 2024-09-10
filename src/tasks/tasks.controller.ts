@@ -11,26 +11,26 @@ export class TasksController {
   ) {}
 
   @Get()
-  getTasks(@Query() filterDto: GetTasksFilterDto): Task[] {
-    if (Object.keys(filterDto).length) {
-      return this.tasksService.getTasksByFilter(filterDto);
-    }
+  // getTasks(@Query() filterDto: GetTasksFilterDto): Task[] {
+  //   if (Object.keys(filterDto).length) {
+  //     return this.tasksService.getTasksByFilter(filterDto);
+  //   }
 
-    return this.tasksService.getTasks();
-  }
+  //   return this.tasksService.getTasks();
+  // }
 
   @Post()
-  createTask(@Body() createTaskDto: createTaskDto): Task {
+  async createTask(@Body() createTaskDto: createTaskDto): Promise<Task> {
     return this.tasksService.createTask(createTaskDto);
   }
 
   @Get(':id')
-  getTaskById(@Param('id') id: string): Task {
+  getTaskById(@Param('id') id: string): Promise<Task> {
     return this.tasksService.getTaskById(id);
   }
 
-  @Delete(':id')
-  deleteTaskById(@Param('id') id: string): void {
-    return this.tasksService.deleteTaskById(id);
-  }
+  // @Delete(':id')
+  // deleteTaskById(@Param('id') id: string): void {
+  //   return this.tasksService.deleteTaskById(id);
+  // }
 }
